@@ -16,8 +16,9 @@ export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
   let number = Number(inputNumber);
   let binary = "";
 
-  // VALIDACIA VSTUPU
-  if (typeof number !== "number" {
+  //Validacia
+
+  if (typeof number !== "number") {
     return "Chyba: vstup nie je cislo";
   }
 
@@ -33,7 +34,8 @@ export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
     return "0";
   }
 
-  // PREVOD NA DVOJKOVU SUSTAVU 
+  //Prevod
+  
   while (number > 0) {
     let bit = number % 2;          // zvysok po deleni dvomi 
     binary = bit + binary;         // pridame zvysok na zaciatok 
