@@ -3,34 +3,51 @@
 
 /**
  * Vyuzitie:
- * Premena cisla  (125) z desiatkovej do dvojkovej ciselnej sustavy
- * Domaca uloha bola doplnena o niektore validacie, ktory v odovzdani ulohy 1 chybali.
- * Kod je pisany bez pouzitia matematickych funkcii.
+ * Premena cisla z desiatkovej (10) do dvojkovej (2) ciselnej sustavy
+ * bez pouzitia metod toString(numberSystem) a Number.parseInt(number, numberSystem).
+ * Domaca uloha bola doplnena o zakladne validacie vstupu.
+ *
+ * @param {string} inputNumber - cislo, ktore sa ma konvertovat
+ * @param {number} inputNumberSystem - sustava, z ktorej prevadzame (10)
+ * @param {number} outputNumberSystem - sustava, do ktorej prevadzame (2)
+ * @returns {string} - prekonvertovane cislo alebo text chyby
  */
-
-export function main() {
-  let number = 125;
+export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
+  let number = Number(inputNumber);
   let binary = "";
 
-  if (typeof number !== "number") {
-    console.log("Nie je cislom");
-  } else if (number < 0) {
-    console.log("Nie je kladnym cislom");
-  } else if (number === 0) {
-    console.log("0");
-  } else {
-    while (number > 0) {
-      let bit = number % 2;          
-      binary = bit + binary;         
-      number = (number - bit) / 2;
-    }
-    console.log(binary);
+  // VALIDACIA VSTUPU
+  if (typeof number !== "number" {
+    return "Chyba: vstup nie je cislo";
   }
+
+  if (number < 0) {
+    return "Chyba: cislo musi byt kladne";
+  }
+
+  if (!Number.isInteger(number)) {
+    return "Chyba: cislo musi byt cele";
+  }
+
+  if (number === 0) {
+    return "0";
+  }
+
+  // PREVOD NA DVOJKOVU SUSTAVU 
+  while (number > 0) {
+    let bit = number % 2;          // zvysok po deleni dvomi 
+    binary = bit + binary;         // pridame zvysok na zaciatok 
+    number = (number - bit) / 2;   // ekvivalent delenia dvomi
+  }
+
+  return binary;
 }
+
 
 export function permittedInputSystems() {
   return [10];
 }
+
 
 export function permittedOutputSystems() {
   return [2];
